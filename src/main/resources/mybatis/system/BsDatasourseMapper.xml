@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.system.mapper.BsDatasourseMapper">
+    
+    <resultMap type="BsDatasourse" id="BsDatasourseResult">
+        <result property="id"    column="id"    />
+        <result property="dataSourseUrl"    column="data_sourse_url"    />
+        <result property="dataSourseName"    column="data_sourse_name"    />
+        <result property="dataSoursePassword"    column="data_sourse_password"    />
+    </resultMap>
+
+    <sql id="selectBsDatasourseVo">
+        select id, data_sourse_url, data_sourse_name, data_sourse_password from bs_datasourse
+    </sql>
+
+    <select id="selectBsDatasourseList" parameterType="BsDatasourse" resultMap="BsDatasourseResult">
+        <include refid="selectBsDatasourseVo"/>
+        <where>  
+            <if test="dataSourseUrl != null  and dataSourseUrl != ''"> and data_sourse_url = #{dataSourseUrl}</if>
+            <if test="dataSourseName != null  and dataSourseName != ''"> and data_sourse_name like concat('%', #{dataSourseName}, '%')</if>
+            <if test="dataSoursePassword != null  and dataSoursePassword != ''"> and data_sourse_password = #{dataSoursePassword}</if>
+        </where>
+    </select>
+    
+    <select id="selectBsDatasourseById" parameterType="Long" resultMap="BsDatasourseResult">
+        <include refid="selectBsDatasourseVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBsDatasourse" parameterType="BsDatasourse">
+        insert into bs_datasourse
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">id,</if>
+            <if test="dataSourseUrl != null  and dataSourseUrl != ''">data_sourse_url,</if>
+            <if test="dataSourseName != null  and dataSourseName != ''">data_sourse_name,</if>
+            <if test="dataSoursePassword != null  and dataSoursePassword != ''">data_sourse_password,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">#{id},</if>
+            <if test="dataSourseUrl != null  and dataSourseUrl != ''">#{dataSourseUrl},</if>
+            <if test="dataSourseName != null  and dataSourseName != ''">#{dataSourseName},</if>
+            <if test="dataSoursePassword != null  and dataSoursePassword != ''">#{dataSoursePassword},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBsDatasourse" parameterType="BsDatasourse">
+        update bs_datasourse
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="dataSourseUrl != null  and dataSourseUrl != ''">data_sourse_url = #{dataSourseUrl},</if>
+            <if test="dataSourseName != null  and dataSourseName != ''">data_sourse_name = #{dataSourseName},</if>
+            <if test="dataSoursePassword != null  and dataSoursePassword != ''">data_sourse_password = #{dataSoursePassword},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBsDatasourseById" parameterType="Long">
+        delete from bs_datasourse where id = #{id}
+    </delete>
+
+    <delete id="deleteBsDatasourseByIds" parameterType="String">
+        delete from bs_datasourse where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>
