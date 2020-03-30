@@ -673,3 +673,16 @@ create table gen_table_column (
   update_time       datetime                                   comment '更新时间',
   primary key (column_id)
 ) engine=innodb auto_increment=1 comment = '代码生成业务表字段';
+
+
+-- ----------------------------
+-- 19、多数据源
+-- ----------------------------
+DROP TABLE IF EXISTS `bs_datasourse`;
+CREATE TABLE `bs_datasourse` (
+  `id` int(11) NOT NULL,
+  `data_sourse_url` varchar(255) DEFAULT NULL,
+  `data_sourse_name` varchar(255) DEFAULT NULL,
+  `data_sourse_password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
