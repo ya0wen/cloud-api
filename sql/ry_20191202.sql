@@ -684,5 +684,6 @@ CREATE TABLE `bs_datasourse` (
   `data_sourse_url` varchar(255) DEFAULT NULL,
   `data_sourse_name` varchar(255) DEFAULT NULL,
   `data_sourse_password` varchar(255) DEFAULT NULL,
+  `data_sourse_driver` varchar(255) DEFAULT NULL
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) engine=innodb auto_increment=1 DEFAULT CHARSET=utf8;

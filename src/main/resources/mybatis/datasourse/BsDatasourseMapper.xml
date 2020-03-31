@@ -9,10 +9,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="dataSourseUrl"    column="data_sourse_url"    />
         <result property="dataSourseName"    column="data_sourse_name"    />
         <result property="dataSoursePassword"    column="data_sourse_password"    />
+        <result property="dataSourseDriver"    column="data_sourse_driver"    />
     </resultMap>
 
     <sql id="selectBsDatasourseVo">
-        select id, data_sourse_url, data_sourse_name, data_sourse_password from bs_datasourse
+        select id, data_sourse_url, data_sourse_name, data_sourse_password,data_sourse_driver from bs_datasourse
     </sql>
 
     <select id="selectBsDatasourseList" parameterType="BsDatasourse" resultMap="BsDatasourseResult">
@@ -20,7 +21,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <where>  
             <if test="dataSourseUrl != null  and dataSourseUrl != ''"> and data_sourse_url = #{dataSourseUrl}</if>
             <if test="dataSourseName != null  and dataSourseName != ''"> and data_sourse_name like concat('%', #{dataSourseName}, '%')</if>
-            <if test="dataSoursePassword != null  and dataSoursePassword != ''"> and data_sourse_password = #{dataSoursePassword}</if>
         </where>
     </select>
     
@@ -36,12 +36,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="dataSourseUrl != null  and dataSourseUrl != ''">data_sourse_url,</if>
             <if test="dataSourseName != null  and dataSourseName != ''">data_sourse_name,</if>
             <if test="dataSoursePassword != null  and dataSoursePassword != ''">data_sourse_password,</if>
+            <if test="dataSourseDriver != null  and dataSourseDriver != ''">data_sourse_driver,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null ">#{id},</if>
             <if test="dataSourseUrl != null  and dataSourseUrl != ''">#{dataSourseUrl},</if>
             <if test="dataSourseName != null  and dataSourseName != ''">#{dataSourseName},</if>
             <if test="dataSoursePassword != null  and dataSoursePassword != ''">#{dataSoursePassword},</if>
+            <if test="dataSourseDriver != null  and dataSourseDriver != ''">#{dataSourseDriver},</if>
          </trim>
     </insert>
 
@@ -51,6 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="dataSourseUrl != null  and dataSourseUrl != ''">data_sourse_url = #{dataSourseUrl},</if>
             <if test="dataSourseName != null  and dataSourseName != ''">data_sourse_name = #{dataSourseName},</if>
             <if test="dataSoursePassword != null  and dataSoursePassword != ''">data_sourse_password = #{dataSoursePassword},</if>
+            <if test="dataSourseDriver != null  and dataSourseDriver != ''">data_sourse_driver = #{dataSourseDriver},</if>
         </trim>
         where id = #{id}
     </update>

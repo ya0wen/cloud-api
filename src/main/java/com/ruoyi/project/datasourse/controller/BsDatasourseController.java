@@ -2,8 +2,10 @@ package com.ruoyi.project.datasourse.controller;
 
 import java.util.List;
 
+import com.ruoyi.common.utils.sql.JDBCConnectionUtil;
 import com.ruoyi.project.datasourse.domain.BsDatasourse;
 import com.ruoyi.project.datasourse.service.IBsDatasourseService;
+import org.springframework.data.annotation.Id;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -100,5 +102,25 @@ public class BsDatasourseController extends BaseController
     public AjaxResult remove(@PathVariable Long[] ids)
     {
         return toAjax(bsDatasourseService.deleteBsDatasourseByIds(ids));
+    }
+
+
+    /**
+     * 测试jdbc连接
+     * @param id
+     * @return
+     */
+    @PostMapping("/test-jdbc/{id}")
+    public AjaxResult testJdbcConConnection(@PathVariable Long id)
+    {
+        BsDatasourse bsDatasourse = bsDatasourseService.selectBsDatasourseById(id);
+
+        try {
+            JDBCConnectionUtil.getConnection(bsDatasourse.getDataSourseUrl(),bsDatasourse.getDataSourseName(),bsDatasourse.getDataSoursePassword(),bsDatasourse.getDataSourseDriver());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.error(e.getMessage());
+        }
+        return AjaxResult.success("连接成功");
     }
 }
