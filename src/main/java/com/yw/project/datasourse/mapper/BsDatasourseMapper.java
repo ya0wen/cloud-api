@@ -1,5 +1,6 @@
 package com.yw.project.datasourse.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yw.project.datasourse.domain.BsDatasourse;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * @author yw
  * @date 2020-03-30
  */
-public interface BsDatasourseMapper 
+public interface BsDatasourseMapper extends BaseMapper<BsDatasourse>
 {
     /**
      * 查询【请填写功能名称】

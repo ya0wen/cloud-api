@@ -97,20 +97,25 @@ token:
     expireTime: 30
   
 # MyBatis配置
-mybatis:
+#mybatis:
     # 搜索指定包别名
-    typeAliasesPackage: com.yw.project.**.domain
+#    typeAliasesPackage: com.yw.project.**.domain
     # 配置mapper的扫描，找到所有的mapper.xml映射文件
-    mapperLocations: classpath*:mybatis/**/*Mapper.xml
+#    mapperLocations: classpath*:mybatis/**/*Mapper.xml
     # 加载全局的配置文件
-    configLocation: classpath:mybatis/mybatis-config.xml
+#    configLocation: classpath:mybatis/mybatis-config.xml
+
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/**/*Mapper.xml
+  type-aliases-package: com.yw.project.**.domain
+  config-location: classpath:mybatis/mybatis-config.xml
 
 # PageHelper分页插件
-pagehelper: 
+pagehelper:
   helperDialect: mysql
   reasonable: true
   supportMethodsArguments: true
-  params: count=countSql 
+  params: count=countSql
 
 # 防止XSS攻击
 xss: 

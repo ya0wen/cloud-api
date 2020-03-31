@@ -13,7 +13,8 @@ import com.yw.framework.web.domain.BaseEntity;
  * @date 2020-03-30
  */
 @Data
-public class BsDatasourse extends BaseEntity
+public class BsDatasourse
+//        extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 

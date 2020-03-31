@@ -2,6 +2,8 @@ package com.yw.project.datasourse.service.impl;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yw.project.datasourse.service.IBsDatasourseService;
 import com.yw.project.datasourse.domain.BsDatasourse;
 import com.yw.project.datasourse.mapper.BsDatasourseMapper;
@@ -15,7 +17,7 @@ import org.springframework.stereotype.Service;
  * @date 2020-03-30
  */
 @Service
-public class BsDatasourseServiceImpl implements IBsDatasourseService
+public class BsDatasourseServiceImpl extends ServiceImpl<BsDatasourseMapper,BsDatasourse> implements IBsDatasourseService
 {
     @Autowired
     private BsDatasourseMapper bsDatasourseMapper;

@@ -2,6 +2,10 @@ package com.yw.project.system.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.yw.project.datasourse.domain.BsDatasourse;
+import com.yw.project.datasourse.mapper.BsDatasourseMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +35,7 @@ import com.yw.project.system.service.ISysUserService;
  * @author yw
  */
 @Service
-public class SysUserServiceImpl implements ISysUserService
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper,SysUser> implements ISysUserService
 {
     private static final Logger log = LoggerFactory.getLogger(SysUserServiceImpl.class);
 
